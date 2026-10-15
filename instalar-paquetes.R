@@ -1,6 +1,10 @@
-# Se corre UNA VEZ al armar el proyecto plantilla, no cada vez que alguien lo abre.
-# Los alumnos copian el proyecto con los paquetes ya puestos; si tuvieran que correr
-# esto, volveriamos a tener el problema de instalacion que el navegador vino a evitar.
+# Instala todo lo que el curso necesita. Se corre UNA VEZ y después te olvidás.
+#
+# Si entraste por el navegador y copiaste el proyecto del curso, ya está hecho: no hace
+# falta que corras esto.
+#
+# Tarda varios minutos y escribe muchísimo texto en la consola. Es normal, dejalo andar.
+# Si te pregunta si querés compilar algún paquete desde el código fuente, contestá "no".
 
 paquetes <- c(
   # Clases 1 a 3
@@ -8,22 +12,29 @@ paquetes <- c(
   "tibble", "stringr", "forcats", "lubridate", "janitor", "gtsummary", "scales",
   # Clases 4 a 6
   "broom", "survival", "survminer", "epitools", "pwr", "consort",
-  # Render de los cuadernos
+  # Para convertir los cuadernos a HTML o PDF
   "knitr", "rmarkdown"
 )
 
 install.packages(paquetes, dependencies = TRUE)
 
-# Quarto a PDF necesita LaTeX, y el proyecto de Posit Cloud no lo trae. Sin esto, el
-# alumno del modulo 6 se choca con un error que no tiene forma de resolver solo, y deja
-# de ser cierto que todo el curso corre en el navegador.
+# tinytex es una instalación mínima de LaTeX. Hace falta solo para exportar los cuadernos
+# a PDF, que se ve en el módulo 6; para todo lo demás podés ignorarlo. Va aparte porque se
+# instala distinto de los paquetes normales: baja su propio LaTeX, y por eso es el paso
+# más lento de todos.
+#
+# Si RStudio te muestra un cartel arriba del editor diciendo que falta tinytex, cerralo.
+# Estas dos líneas lo resuelven.
 if (!requireNamespace("tinytex", quietly = TRUE)) install.packages("tinytex")
 if (!tinytex::is_tinytex()) tinytex::install_tinytex()
 
+# Comprobación final. Si algo falló, el nombre aparece acá y no entre las mil líneas de
+# salida del instalador.
 faltan <- paquetes[!vapply(paquetes, requireNamespace, logical(1), quietly = TRUE)]
 if (length(faltan)) {
-  cat("FALTAN:", paste(faltan, collapse = ", "), "\n")
+  cat("\nFALTAN:", paste(faltan, collapse = ", "), "\n")
+  cat("Volvé a correr el script. Si sigue fallando, copiá este mensaje y preguntá.\n")
 } else {
-  cat("Los", length(paquetes), "paquetes quedaron instalados.\n")
+  cat("\nListo. Los", length(paquetes), "paquetes quedaron instalados.\n")
 }
 cat("LaTeX listo:", tinytex::is_tinytex(), "\n")

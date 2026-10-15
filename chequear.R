@@ -1,7 +1,9 @@
-# Verificacion de los ejercicios del curso. Se carga al principio de cada cuaderno.
+# Corrige los ejercicios del curso. Se carga al principio de cada cuaderno con
+# source("chequear.R") y no hace falta que lo abras ni que lo entiendas.
 #
-# Nunca llama a stop(). Un error dentro de un chunk aborta el render completo y el
-# alumno se queda sin documento justo cuando se equivoco, que es cuando mas lo necesita.
+# Si igual tenes curiosidad: nunca llama a stop(). Un error adentro de un bloque corta el
+# render del documento entero, asi que te quedarias sin cuaderno justo cuando te
+# equivocaste, que es cuando mas lo necesitas.
 
 fallo <- function(mensaje) {
   cat("[ ] ", mensaje, "\n", sep = "")
