@@ -39,6 +39,7 @@ source("instalar-paquetes.R")
 | Archivo | Qué es |
 |---|---|
 | `clase-01-ejercicios.qmd` y siguientes | Los ejercicios de cada clase |
+| `resueltas/` | Cada clase resuelta y explicada |
 | `datos/` | Los archivos que usan los ejercicios |
 | `chequear.R` | Lo que corrige tus respuestas. No hace falta abrirlo |
 | `guia-instalacion.pdf` | Instalar R, y qué hacer cuando falla |
@@ -63,10 +64,17 @@ o, si algo no cierra:
 
 Nadie del otro lado mira esto. Es para vos.
 
-## Las soluciones
+## La carpeta `resueltas/`
 
-Se publican acá el **11 de noviembre**, con el porqué de cada ejercicio y no solo la
-línea de código.
+No es un solucionario. El bloque de verificación ya te dice si diste en el clavo, así que
+un archivo con los números no agregaría nada.
+
+Lo que hay ahí es la explicación: por qué esa función y no otra, qué supuesto estás
+haciendo sin darte cuenta, y en varios casos el gráfico que lo muestra. Es la parte que no
+entra en el video.
+
+Intentá el ejercicio primero. Pero si te trabaste, abrila sin culpa: el curso no tiene
+nota ni fecha de entrega, y quedarse trabado no sirve para nada.
 
 ## Si algo se rompe
 
