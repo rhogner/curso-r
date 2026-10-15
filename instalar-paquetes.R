@@ -18,15 +18,9 @@ paquetes <- c(
 
 install.packages(paquetes, dependencies = TRUE)
 
-# tinytex es una instalación mínima de LaTeX. Hace falta solo para exportar los cuadernos
-# a PDF, que se ve en el módulo 6; para todo lo demás podés ignorarlo. Va aparte porque se
-# instala distinto de los paquetes normales: baja su propio LaTeX, y por eso es el paso
-# más lento de todos.
-#
-# Si RStudio te muestra un cartel arriba del editor diciendo que falta tinytex, cerralo.
-# Estas dos líneas lo resuelven.
-if (!requireNamespace("tinytex", quietly = TRUE)) install.packages("tinytex")
-if (!tinytex::is_tinytex()) tinytex::install_tinytex()
+# Si RStudio te muestra un cartel arriba del editor diciendo que falta el paquete tinytex,
+# cerralo. Es para exportar a PDF y el entorno del curso ya trae LaTeX instalado, así que
+# instalarlo sería poner una segunda copia encima de la que ya está.
 
 # Comprobación final. Si algo falló, el nombre aparece acá y no entre las mil líneas de
 # salida del instalador.
@@ -37,4 +31,4 @@ if (length(faltan)) {
 } else {
   cat("\nListo. Los", length(paquetes), "paquetes quedaron instalados.\n")
 }
-cat("LaTeX listo:", tinytex::is_tinytex(), "\n")
+cat("LaTeX para exportar a PDF:", nzchar(Sys.which("pdflatex")), "\n")
